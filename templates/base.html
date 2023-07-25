@@ -44,7 +44,7 @@
                             <button type="button" class="btn btn-sm btn-light " >{{ request.user.fullname }}</button>
                         {% else %}
                             <div class="btn-group">
-                                <button class="dropdown-item" type="button"><a href="">Sign in</a></button>
+                                <button class="dropdown-item" type="button"><a href="{% url 'Accounts:login' %}">Sign in</a></button>
                                 <button class="dropdown-item" type="button"><a href="{% url 'Accounts:register' %}">Sign up</a></button>
                             </div>
                         {% endif %}
