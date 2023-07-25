@@ -5,26 +5,25 @@ import datetime
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, fullname, date_of_birth, password=None,):
+    def create_user(self, email, fullname, password=None,):
         if not email:
             raise ValueError("Users must have an email address")
 
         user = self.model(
             email=self.normalize_email(email),
-            date_of_birth=date_of_birth,
             fullname=fullname,
+
         )
 
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, fullname, date_of_birth, password=None):
+    def create_superuser(self, email, fullname, password=None):
         user = self.create_user(
             email,
             password=password,
-            date_of_birth=date_of_birth,
-            fullname=fullname
+            fullname=fullname,
         )
         user.is_admin = True
         user.save(using=self._db)
@@ -45,10 +44,10 @@ class User(AbstractBaseUser):
     objects = UserManager()
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["date_of_birth", 'fullname']
+    REQUIRED_FIELDS = ['fullname']
 
     def __str__(self):
-        return self.email
+        return self.fullname
 
     def has_perm(self, perm, obj=None):
         return True
