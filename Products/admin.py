@@ -9,6 +9,7 @@ class InfoStack(admin.StackedInline):
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('title','price')
     inlines = (InfoStack,)
+
 # Register your models here.
 
 admin.site.register(Information)

@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'Accounts',
     'Home.apps',
     'Products',
+    'Order',
     'ckeditor'
 ]
 
